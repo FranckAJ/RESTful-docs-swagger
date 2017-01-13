@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
+import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 
@@ -51,12 +52,15 @@ public class SwaggerApplication {
     @Bean
     public SwaggerSpringMvcPlugin groupOnePlugin() {
        return new SwaggerSpringMvcPlugin(swaggerConfig)
-           .includePatterns("/authors.*?")
-           .swaggerGroup("admin");
+    		.apiVersion("1.0-RC")
+    		.apiInfo(new ApiInfo("RESTful Books", "API example doc with Swagger", "", "fjunior.aragao@gmaillcom", "MIT", ""))
+            .includePatterns("/authors.*?", "/books.*?")
+            .swaggerGroup("admin");
     }
+ 
 
 	/**
-	 * 
+	 * create a new book in BD when start application
 	 */
 	@PostConstruct
 	@Transactional

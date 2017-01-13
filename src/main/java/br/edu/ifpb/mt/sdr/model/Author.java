@@ -30,6 +30,13 @@ public class Author {
 
 	@NotBlank
 	private String name;
+	
+	public Author() {
+	}
+
+	public Author(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;

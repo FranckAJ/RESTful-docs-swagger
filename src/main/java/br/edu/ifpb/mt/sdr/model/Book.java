@@ -51,7 +51,14 @@ public class Book {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Author> authors = new HashSet<>();
 	
-	public void addAuthor(Author author){
+	public Book() {
+	}
+
+	public Book(Long id) {
+		this.id = id;
+	}
+
+	public void addAuthor(Author author) {
 		authors.add(author);
 	}
 
