@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.Authorization;
-import com.wordnik.swagger.annotations.AuthorizationScope;
 
 import br.edu.ifpb.mt.sdr.model.Book;
 import br.edu.ifpb.mt.sdr.repository.BookRepository;
@@ -32,10 +30,7 @@ public class BookRestController {
 	 * @param Book
 	 * @return
 	 */
-	@ApiOperation(value = "Save a new book", response=ResponseEntity.class, authorizations = {
-		@Authorization(scopes= {@AuthorizationScope(scope="write:books", description="create book")}, value="bookAuth")
-
-	})
+	@ApiOperation(value = "Save a new book", response=ResponseEntity.class)
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Book> save(@RequestBody Book Book) {
 
